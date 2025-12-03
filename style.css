@@ -429,3 +429,63 @@
                 margin-left: 1rem;
             }
         }
+
+        /* Auth Pages */
+        .auth-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            /* Top padding for header */
+            background: linear-gradient(135deg, rgba(12, 12, 12, 0.8), rgba(255, 0, 0, 0.05));
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 500px;
+            background: #141414;
+            padding: 3rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .auth-footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .auth-footer a {
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cursor Glow Effect */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.15) 0%, rgba(255, 0, 0, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            /* Hidden initially until moved */
+        }
+
+        body:hover .cursor-glow {
+            opacity: 1;
+        }
