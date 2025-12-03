@@ -1,433 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoheads.np - The Pulse of Nepal's Automotive Culture</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0C0C0C;
-            color: #E0E0E0;
-            line-height: 1.6;
-        }
-
-        /* Header Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(12, 12, 12, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #FF0000;
-            letter-spacing: -1px;
-        }
-
-        .logo span {
-            color: #FFFFFF;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #E0E0E0;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #FF0000;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #FF0000;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(12, 12, 12, 0.7), rgba(255, 0, 0, 0.3)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231A1A1A" width="1200" height="800"/><path fill="%23FF0000" opacity="0.1" d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            padding: 2rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #FFFFFF;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        .hero h1 span {
-            color: #FF0000;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2.5rem;
-        }
-
-        .btn-primary {
-            background: #FF0000;
-            color: #FFFFFF;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: #CC0000;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
-        }
-
-        .btn-secondary {
-            background: #0C0C0C;
-            color: #FF0000;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: 2px solid #FF0000;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: #FF0000;
-            color: #FFFFFF;
-            transform: translateY(-2px);
-        }
-
-        /* Section Styling */
-        section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: #FFFFFF;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #FF0000, transparent);
-        }
-
-        /* About Section */
-        .about {
-            background: #1A1A1A;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: #B3B3B3;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-image {
-            height: 400px;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(26, 26, 26, 0.8)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><rect fill="%230C0C0C" width="600" height="400"/><circle cx="300" cy="200" r="80" fill="%23FF0000" opacity="0.3"/></svg>');
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Story Section */
-        .story-timeline {
-            margin-top: 3rem;
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #FF0000, transparent);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            order: 2;
-        }
-
-        .timeline-content {
-            background: #1A1A1A;
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid #FF0000;
-        }
-
-        .timeline-content h3 {
-            color: #FF0000;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
-            color: #B3B3B3;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #1A1A1A;
-        }
-
-        .contact-card {
-            max-width: 700px;
-            margin: 3rem auto;
-            background: #0C0C0C;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: #E0E0E0;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: #1A1A1A;
-            border: 1px solid #333;
-            border-radius: 4px;
-            color: #FFFFFF;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #FF0000;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        /* Footer */
-        footer {
-            background: #0C0C0C;
-            border-top: 1px solid rgba(255, 0, 0, 0.2);
-            padding: 3rem 2rem 1.5rem;
-        }
-
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-col h4 {
-            color: #FF0000;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-col p,
-        .footer-col a {
-            color: #B3B3B3;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-col a:hover {
-            color: #FF0000;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: #1A1A1A;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FF0000;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            background: #FF0000;
-            color: #FFFFFF;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            color: #666;
-            padding-top: 2rem;
-            border-top: 1px solid #1A1A1A;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .about-grid,
-            .timeline-item {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-line {
-                left: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -444,7 +24,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
+        <div class="hero-content reveal">
             <h1>The Pulse of Nepal's <span>Automotive Culture</span></h1>
             <div class="cta-buttons">
                 <a href="/register" class="btn-primary">Sign Up</a>
@@ -455,12 +35,15 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-        <h2 class="section-title">About Us</h2>
-        <div class="about-grid">
+        <h2 class="section-title reveal">About Us</h2>
+        <div class="about-grid reveal">
             <div class="about-content">
-                <p>Welcome to Autoheads.np, Nepal's premier automotive marketplace and community hub. We're more than just a platform—we're a movement driven by passion, precision, and the roar of engines.</p>
-                <p>From classic collectors to modern enthusiasts, from weekend mechanics to professional drivers, Autoheads.np brings together Nepal's automotive community under one digital roof.</p>
-                <p>Whether you're buying, selling, or simply sharing your love for automobiles, this is your home. Join thousands of like-minded individuals who live and breathe automotive culture.</p>
+                <p>Welcome to Autoheads.np, Nepal's premier automotive marketplace and community hub. We're more than
+                    just a platform—we're a movement driven by passion, precision, and the roar of engines.</p>
+                <p>From classic collectors to modern enthusiasts, from weekend mechanics to professional drivers,
+                    Autoheads.np brings together Nepal's automotive community under one digital roof.</p>
+                <p>Whether you're buying, selling, or simply sharing your love for automobiles, this is your home. Join
+                    thousands of like-minded individuals who live and breathe automotive culture.</p>
             </div>
             <div class="about-image"></div>
         </div>
@@ -468,27 +51,30 @@
 
     <!-- Story Section -->
     <section id="story" class="story">
-        <h2 class="section-title">Our Story</h2>
+        <h2 class="section-title reveal">Our Story</h2>
         <div class="story-timeline">
             <div class="timeline-line"></div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div class="timeline-content">
                     <h3>The Beginning</h3>
-                    <p>Born from a shared passion for automobiles, Autoheads.np started as a simple idea: to connect Nepal's automotive enthusiasts in one dynamic space.</p>
+                    <p>Born from a shared passion for automobiles, Autoheads.np started as a simple idea: to connect
+                        Nepal's automotive enthusiasts in one dynamic space.</p>
                 </div>
                 <div></div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div></div>
                 <div class="timeline-content">
                     <h3>Building Community</h3>
-                    <p>What began as conversations over car meets evolved into a full-fledged platform. We listened to the community, understood their needs, and built something special.</p>
+                    <p>What began as conversations over car meets evolved into a full-fledged platform. We listened to
+                        the community, understood their needs, and built something special.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div class="timeline-content">
                     <h3>Today</h3>
-                    <p>Now, we're Nepal's leading automotive marketplace—where deals are made, knowledge is shared, and the automotive culture thrives. This is just the beginning of our journey.</p>
+                    <p>Now, we're Nepal's leading automotive marketplace—where deals are made, knowledge is shared, and
+                        the automotive culture thrives. This is just the beginning of our journey.</p>
                 </div>
                 <div></div>
             </div>
@@ -497,8 +83,8 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-card">
+        <h2 class="section-title reveal">Contact Us</h2>
+        <div class="contact-card reveal">
             <form>
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -547,5 +133,7 @@
             <p>© 2024 Autoheads.np. All rights reserved.</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>
